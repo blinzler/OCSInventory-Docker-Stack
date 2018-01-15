@@ -41,16 +41,16 @@ We include a MYSQL container with pre-configured with the required database sett
 
 We use docker-compose to build these images. Clone this repo and then:
 
-> sudo git clone https://github.com/OCSInventory-NG/OCSInventory-Docker-Stack.git <br>
+> sudo git clone https://github.com/blinzler/OCSInventory-Docker-Stack.git <br>
 > cd OCSInventory-Docker-Stack <br>
 > sudo docker-compose build 
 
 This command will build all the images and pull the latest version.
 
 ----------
-You can also find a prebuilt image for OCSInventory without MYSQL server from our [Docker Hub repository](https://hub.docker.com/r/ocsinventory/ocsinventory-docker-image/) or our [Github](https://github.com/OCSInventory-NG/OCSInventory-Docker-Image), which can be pulled with this command:
+You can also find a prebuilt image for OCSInventory without MYSQL server from our [Docker Hub repository](https://hub.docker.com/r/blinzlerone/ocsinventory-docker-image/) or our [Github](https://github.com/blinzler/OCSInventory-Docker-Image), which can be pulled with this command:
 
-> sudo docker pull ocsinventory/ocsinventory-docker-image:master
+> sudo docker image pull blinzlerone/ocsinventory-docker-image:latest
 
 ###How to run it
 
@@ -71,11 +71,12 @@ environment:
 
 environment :
 
-> OCS_DBNAME : ocsweb <br>
-> OCS_DBSERVER_READ : ocsinventory-db <br>
-> OCS_DBSERVER_WRITE : ocsinventory-db <br>
-> OCS_DBUSER : ocs <br>
-> OCS_DBPASS : ocs
+> TIMEZONE: Europe/Berlin
+> OCS_DBNAME: ocsweb <br>
+> OCS_DBSERVER_READ: ocsinventory-db <br>
+> OCS_DBSERVER_WRITE: ocsinventory-db <br>
+> OCS_DBUSER: ocs <br>
+> OCS_DBPASS: ocs
 
 These values are the default values for OCSInventory.
 After adjusting the docker-compose.yml, you can test the containers with docker-compose
@@ -90,19 +91,19 @@ This will bring up all needed containers, link them and mount data volumes accor
 
 The docker exec command allows you to run commands inside a Docker container. The following command line will give you a bash shell inside your OCSInventory container:
 
-> sudo docker exec -it ocsinventory-server bash
+> sudo docker container exec -it ocsinventory-server bash
 
 or
 
-> sudo docker exec -it ocsinventory-db bash
+> sudo docker container exec -it ocsinventory-db bash
 
 You can access the logs from the container OCSInventory through Docker container log:
 
-> sudo docker logs ocsinventory-server
+> sudo docker container logs ocsinventory-server
 
 or
 
-> sudo docker logs ocsinventory-db
+> sudo docker container logs ocsinventory-db
 
 ###Data Volume
 
